@@ -7,11 +7,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 def scrape_all():
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    browser = Browser("chrome", **executable_path, headless=False)
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=True)
+    
     news_title, news_paragraph = mars_news(browser)
+
     img_url = featured_image(browser)
-    mars_weather = twitter_weather(browser)
     facts = mars_facts()
     hemisphere_image_urls = hemisphere(browser)
     timestamp = dt.datetime.now()
@@ -20,7 +21,6 @@ def scrape_all():
         "news_title": news_title,
         "news_paragraph": news_paragraph,
         "featured_image": img_url,
-        "weather": mars_weather,
         "facts": facts,
         "hemispheres": hemisphere_image_urls,
         "last_modified": timestamp
@@ -100,7 +100,7 @@ def mars_facts():
     return df.to_html(classes="table table-striped")
 
 def hemisphere(browser):
-    # Visit the USGS Astrogeology Science Center Site
+    
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)
 
@@ -115,8 +115,8 @@ def hemisphere(browser):
         browser.find_by_css("a.product-item h3")[item].click()
         
         # Find Sample Image Anchor Tag & Extract <href>
-        sample_element = browser.find_link_by_text("Sample").first
-        hemisphere["img_url"] = sample_element["href"]
+        sample_elem = browser.find_link_by_text("Sample").first
+        hemisphere["img_url"] = sample_elem["href"]
         
         # Get Hemisphere Title
         hemisphere["title"] = browser.find_by_css("h2.title").text
@@ -128,22 +128,8 @@ def hemisphere(browser):
         browser.back()
     return hemisphere_image_urls
 
-# Helper Function
-def scrape_hemisphere(html_text):
-    hemisphere_soup = BeautifulSoup(html_text, "html.parser")
-    try: 
-        title_element = hemisphere_soup.find("h2", class_="title").get_text()
-        sample_element = hemisphere_soup.find("a", text="Sample").get("href")
-    except AttributeError:
-        title_element = None
-        sample_element = None 
-    hemisphere = {
-        "title": title_element,
-        "img_url": sample_element
-    }
-    return hemisphere
-
 if __name__ == "__main__":
+
 
     # If running as script, print scraped data
     print(scrape_all())
