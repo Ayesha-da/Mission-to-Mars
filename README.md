@@ -4,11 +4,11 @@ To use BeautifulSoup and Splinter to scrape data, full-resolution images of Mars
 ## Purpose:
  ### To get the latest news and updates with the click of a button.
  
-![mars-news](https://user-images.githubusercontent.com/84524153/129558989-82903cac-9e88-4df3-b2d5-e8edd4242af2.png)
+![mars-news1](https://user-images.githubusercontent.com/84524153/129569019-0a64a6de-d62f-40e1-9c78-b0c22cbba84e.png)
 ![mars-hemisphere1](https://user-images.githubusercontent.com/84524153/129559316-00ae7628-7f70-4051-8c19-55452f029a27.png)
 
 ## Mobile Device Preview
-![mars-mobile-pic](https://user-images.githubusercontent.com/84524153/129559505-d229b7f4-4ec6-451f-9677-4eb53a49c5b9.png)
+![mars-mobile-pic1](https://user-images.githubusercontent.com/84524153/129569582-9ec967ca-115b-4d11-8a6b-ee2f6f754182.png)
 ![mars-hemisphere2](https://user-images.githubusercontent.com/84524153/129561940-729d4648-f28e-444f-a95a-4a75a8082be3.png)
 
 
