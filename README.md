@@ -1,6 +1,6 @@
 # Mission-to-Mars!
 ## Overview:
-To use BeautifulSoup, Splinter, and Pandas to scrape data from different webpages related to Mars, and display the results on a webpage using MongoDB and Flask.
+To use BeautifulSoup and Splinter to scrape data, full-resolution images of Mars’s hemispheres and the titles of those images, store the scraped data on a Mongo database, use Flask,a web application to display the data, and alter the design of the web app to accommodate related images.
 ## Purpose:
  ### To get the latest news and updates with the click of a button.
  
